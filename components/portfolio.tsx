@@ -4,10 +4,10 @@ import { useState, useEffect, useRef } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChevronDown, Download, Mail, Phone } from 'lucide-react'
+import { Download, Mail, Phone } from 'lucide-react'
+import Image from 'next/image'
 
-const googleDrivePdfUrl = "https://docs.google.com/document/d/1kTAo0h-RxWOvVClNo7OiAVg4Qjl01Rpi/export?format=pdf"; // replace YOUR_FILE_ID with your actual file ID
-
+const googleDrivePdfUrl = "https://docs.google.com/document/d/1kTAo0h-RxWOvVClNo7OiAVg4Qjl01Rpi/export?format=pdf";
 
 interface DicebearImage {
   url: string
@@ -79,42 +79,41 @@ export function PortfolioComponent() {
       </header>
 
       <nav className="bg-primary text-primary-foreground sticky top-0 z-10">
-  <div className="container mx-auto px-4 flex justify-between items-center">
-    <ul className="flex space-x-4 py-4 text-sm md:text-base">
-      <li><a onClick={() => scrollToSection(aboutRef)} className="cursor-pointer hover:underline">About</a></li>
-      <li><a onClick={() => scrollToSection(experienceRef)} className="cursor-pointer hover:underline">Experience</a></li>
-      <li><a onClick={() => scrollToSection(extracurricularRef)} className="cursor-pointer hover:underline">Extracurricular</a></li>
-      <li><a onClick={() => scrollToSection(contactRef)} className="cursor-pointer hover:underline">Contact</a></li>
-    </ul>
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <ul className="flex space-x-4 py-4 text-sm md:text-base">
+            <li><a onClick={() => scrollToSection(aboutRef)} className="cursor-pointer hover:underline">About</a></li>
+            <li><a onClick={() => scrollToSection(experienceRef)} className="cursor-pointer hover:underline">Experience</a></li>
+            <li><a onClick={() => scrollToSection(extracurricularRef)} className="cursor-pointer hover:underline">Extracurricular</a></li>
+            <li><a onClick={() => scrollToSection(contactRef)} className="cursor-pointer hover:underline">Contact</a></li>
+          </ul>
 
-    <div className="relative">
-      <a 
-        href={googleDrivePdfUrl}
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl"
-      >
-        <Download className="h-4 w-4" /> {/* Always show the download icon */}
-        <span className="hidden md:inline ml-1 text-sm">Download Resume</span> {/* Show text only on medium and larger screens */}
-      </a>
-    </div>
-  </div>
-</nav>
-
+          <div className="relative">
+            <a 
+              href={googleDrivePdfUrl}
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl"
+            >
+              <Download className="h-4 w-4" />
+              <span className="hidden md:inline ml-1 text-sm">Download Resume</span>
+            </a>
+          </div>
+        </div>
+      </nav>
 
       <main className="container mx-auto px-4 py-8">
         <section id="about" className="mb-12" ref={aboutRef}>
           <Card>
             <CardHeader>
               <CardTitle>Vanakam (Namaste)</CardTitle>
-              <CardDescription>I'm Dhanush Pandiyan</CardDescription>
+              <CardDescription>I&apos;m Dhanush Pandiyan</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="mb-4">
-                Over the past few months, I've been deeply involved in various finance roles that have honed my analytical and strategic skills. From preparing comprehensive equity research reports during my internship at Protege Wealth to promoting personalized mentoring services at Institutor, I've gained a diverse set of experiences in the financial sector.
+                Over the past few months, I&apos;ve been deeply involved in various finance roles that have honed my analytical and strategic skills. From preparing comprehensive equity research reports during my internship at Protege Wealth to promoting personalized mentoring services at Institutor, I&apos;ve gained a diverse set of experiences in the financial sector.
               </p>
               <p>
-                I am eager to apply my diverse skill set and financial knowledge to new opportunities. My goal is to leverage my analytical and strategic thinking to drive impactful business solutions in the finance industry. I aim to contribute to innovative strategies that foster growth and sustainability in the world of finance. Let's create something amazing together!
+                I am eager to apply my diverse skill set and financial knowledge to new opportunities. My goal is to leverage my analytical and strategic thinking to drive impactful business solutions in the finance industry. I aim to contribute to innovative strategies that foster growth and sustainability in the world of finance. Let&apos;s create something amazing together!
               </p>
             </CardContent>
           </Card>
@@ -136,9 +135,11 @@ export function PortfolioComponent() {
                 </CardHeader>
                 <CardContent>
                   {experienceImages[0] ? (
-                    <img 
+                    <Image 
                       src={experienceImages[0].url} 
                       alt="Abstract representation of Fincell experience" 
+                      width={800} 
+                      height={192}
                       className="w-full h-48 object-cover mb-4 rounded-md" 
                     />
                   ) : (
@@ -146,7 +147,7 @@ export function PortfolioComponent() {
                       <p>Generating image...</p>
                     </div>
                   )}
-                  <p className="mb-2">At Fincell, the finance club of St. Xavier's College, we are dedicated to promoting financial literacy and developing corporate skills such as research and presentation.</p>
+                  <p className="mb-2">At Fincell, the finance club of St. Xavier&apos;s College, we are dedicated to promoting financial literacy and developing corporate skills such as research and presentation.</p>
                   <p className="mb-2">Within the first 20 days of 2024, I contributed to every report published by Fincell, which was our first set of reports.</p>
                   <p>In my second year, I was promoted to Auto Ancillary Sector Head, leading a team of four analysts. We conducted extensive sector analysis, following industry trends and researching companies.</p>
                 </CardContent>
@@ -160,9 +161,11 @@ export function PortfolioComponent() {
                 </CardHeader>
                 <CardContent>
                   {experienceImages[1] ? (
-                    <img 
+                    <Image 
                       src={experienceImages[1].url} 
                       alt="Abstract representation of Protege Wealth experience" 
+                      width={800} 
+                      height={192}
                       className="w-full h-48 object-cover mb-4 rounded-md" 
                     />
                   ) : (
@@ -183,9 +186,11 @@ export function PortfolioComponent() {
                 </CardHeader>
                 <CardContent>
                   {experienceImages[2] ? (
-                    <img 
+                    <Image 
                       src={experienceImages[2].url} 
                       alt="Abstract representation of Institutor experience" 
+                      width={800} 
+                      height={192}
                       className="w-full h-48 object-cover mb-4 rounded-md" 
                     />
                   ) : (
@@ -208,18 +213,16 @@ export function PortfolioComponent() {
               <CardDescription>Member - Green Club</CardDescription>
             </CardHeader>
             <CardContent>
-            
-  <p className="mb-4">
-    I am an active member of the Green Club at St. Xavier's College, where we focus on environmental sustainability initiatives. Our projects include campus clean-up drives, workshops on waste management, and raising awareness about eco-friendly practices.
-  </p>
-  <p className="mb-4">
-    As part of the Green Club, I developed skills in organizing events, collaborating with team members, and spreading environmental awareness. My role allowed me to contribute to meaningful causes while enhancing my leadership abilities.
-  </p>
-  <p>
-    I believe that sustainability is not just a choice but a responsibility. Through my involvement, I aim to inspire others to adopt sustainable practices and make a positive impact on our community and the environment.
-  </p>
-</CardContent>
-
+              <p className="mb-4">
+                I am an active member of the Green Club at St. Xavier&apos;s College, where we focus on environmental sustainability initiatives. Our projects include campus clean-up drives, workshops on waste management, and raising awareness about eco-friendly practices.
+              </p>
+              <p className="mb-4">
+                As part of the Green Club, I developed skills in organizing events, collaborating with team members, and spreading environmental awareness. My role allowed me to contribute to meaningful causes while enhancing my leadership abilities.
+              </p>
+              <p>
+                I believe that sustainability is not just a choice but a responsibility. Through my involvement, I aim to inspire others to adopt sustainable practices and make a positive impact on our community and the environment.
+              </p>
+            </CardContent>
           </Card>
         </section>
 
@@ -227,21 +230,20 @@ export function PortfolioComponent() {
           <Card>
             <CardHeader>
               <CardTitle>Team Up for Excellence in Finance</CardTitle>
-              <CardDescription>Let's Collaborate!</CardDescription>
+              <CardDescription>Let&apos;s Collaborate!</CardDescription>
             </CardHeader>
             <CardContent>
-            <p className="mb-4">
-    Interested in collaborating or learning more about my work? I’d love to connect!
-  </p>
-  <div className="flex items-center space-x-4">
-    <Button variant="outline" onClick={() => window.location.href = 'mailto:dhanushpandiyan15@gmail.com'}>
-      <Mail className="mr-2" /> Email Me
-    </Button>
-    <Button variant="outline" onClick={() => window.location.href = 'tel:+919930543121'}>
-      <Phone className="mr-2" /> Call Me
-    </Button>
-
-  </div>
+              <p className="mb-4">
+                Interested in collaborating or learning more about my work? I&apos;d love to connect!
+              </p>
+              <div className="flex items-center space-x-4">
+                <Button variant="outline" onClick={() => window.location.href = 'mailto:dhanushpandiyan15@gmail.com'}>
+                  <Mail className="mr-2" /> Email Me
+                </Button>
+                <Button variant="outline" onClick={() => window.location.href = 'tel:+919930543121'}>
+                  <Phone className="mr-2" /> Call Me
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </section>

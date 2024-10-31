@@ -6,6 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChevronDown, Download, Mail, Phone } from 'lucide-react'
 
+const googleDrivePdfUrl = "https://docs.google.com/document/d/1kTAo0h-RxWOvVClNo7OiAVg4Qjl01Rpi/export?format=pdf"; // replace YOUR_FILE_ID with your actual file ID
+
+
 interface DicebearImage {
   url: string
 }
@@ -18,7 +21,6 @@ const generateDicebearImage = (seed: string, style: string): string => {
 export function PortfolioComponent() {
   const [heroImage, setHeroImage] = useState<DicebearImage | null>(null)
   const [experienceImages, setExperienceImages] = useState<DicebearImage[]>([])
-  const pdfPath = "/dhanush-portfolio/public/Dhanush-resume October'24.docx.pdf";
   // Refs for each section to enable smooth scrolling
   const aboutRef = useRef<HTMLDivElement>(null)
   const experienceRef = useRef<HTMLDivElement>(null)
@@ -77,20 +79,28 @@ export function PortfolioComponent() {
       </header>
 
       <nav className="bg-primary text-primary-foreground sticky top-0 z-10">
-        <div className="container mx-auto px-4">
-          <ul className="flex justify-center space-x-4 py-4">
-            <li><a onClick={() => scrollToSection(aboutRef)} className="cursor-pointer hover:underline">About</a></li>
-            <li><a onClick={() => scrollToSection(experienceRef)} className="cursor-pointer hover:underline">Experience</a></li>
-            <li><a onClick={() => scrollToSection(extracurricularRef)} className="cursor-pointer hover:underline">Extracurricular</a></li>
-            <li><a onClick={() => scrollToSection(contactRef)} className="cursor-pointer hover:underline">Contact</a></li>
-            <li>
-              <Button  onClick={() => window.open(pdfPath, '_blank')}>
-                <Download className="" /> Download Resume
-              </Button>
-            </li>
-          </ul>
-        </div>
-      </nav>
+  <div className="container mx-auto px-4 flex justify-between items-center">
+    <ul className="flex space-x-4 py-4 text-sm md:text-base">
+      <li><a onClick={() => scrollToSection(aboutRef)} className="cursor-pointer hover:underline">About</a></li>
+      <li><a onClick={() => scrollToSection(experienceRef)} className="cursor-pointer hover:underline">Experience</a></li>
+      <li><a onClick={() => scrollToSection(extracurricularRef)} className="cursor-pointer hover:underline">Extracurricular</a></li>
+      <li><a onClick={() => scrollToSection(contactRef)} className="cursor-pointer hover:underline">Contact</a></li>
+    </ul>
+
+    <div className="relative">
+      <a 
+        href={googleDrivePdfUrl}
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl"
+      >
+        <Download className="h-4 w-4" /> {/* Always show the download icon */}
+        <span className="hidden md:inline ml-1 text-sm">Download Resume</span> {/* Show text only on medium and larger screens */}
+      </a>
+    </div>
+  </div>
+</nav>
+
 
       <main className="container mx-auto px-4 py-8">
         <section id="about" className="mb-12" ref={aboutRef}>
@@ -224,15 +234,13 @@ export function PortfolioComponent() {
     Interested in collaborating or learning more about my work? I’d love to connect!
   </p>
   <div className="flex items-center space-x-4">
-    <Button variant="outline" onClick={() => window.location.href = 'mailto:youremail@example.com'}>
+    <Button variant="outline" onClick={() => window.location.href = 'mailto:dhanushpandiyan15@gmail.com'}>
       <Mail className="mr-2" /> Email Me
     </Button>
-    <Button variant="outline" onClick={() => window.location.href = 'tel:+123456789'}>
+    <Button variant="outline" onClick={() => window.location.href = 'tel:+919930543121'}>
       <Phone className="mr-2" /> Call Me
     </Button>
-    <Button variant="outline" onClick={() => scrollToSection(aboutRef)}>
-      <ChevronDown className="mr-2" /> Learn More
-    </Button>
+
   </div>
             </CardContent>
           </Card>
